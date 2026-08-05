@@ -1,0 +1,27 @@
+name: Publier les réponses Oracle approuvées
+
+# Toutes les heures — voir ROADMAP.md (repo aos-explorer, section "Oracle
+# des Règles") pour le détail complet du circuit de double validation.
+# Volontairement PAS déclenché à la demande par l'app (aucun scope
+# "Actions" dans le token qu'elle transporte) — seul un déclenchement
+# manuel depuis github.com (réservé aux collaborateurs du repo) est
+# possible en plus du passage horaire.
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publier les fiches Oracle approuvées
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/publier_oracle.py
