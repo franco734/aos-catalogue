@@ -29403,20 +29403,6 @@
         "Core Rules and GHB 2026 2027.pdf — section 1.2 Using Commands (p.83)",
         "Core Rules and GHB 2026 2027.pdf — sections 6.0/7.0 Attacking/Defensive Commands (p.87)"
       ]
-    },
-    {
-      "categorie": "communaute",
-      "extrait_regle": "Extrait de test, jamais une vraie regle.",
-      "id": "test-circuit-complet-un-test-de-publication-automatique",
-      "mots_cles": [
-        "test",
-        "circuit"
-      ],
-      "question_exemple": "[TEST CIRCUIT COMPLET] Un test de publication automatique ?",
-      "reponse": "Oui - ceci est une entree de test du circuit de bout en bout, a supprimer apres verification.",
-      "sources": [
-        "Test"
-      ]
     }
   ],
   "regimentOfRenownUnits": [
