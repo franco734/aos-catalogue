@@ -1,14 +1,22 @@
 name: Publier les réponses Oracle approuvées
 
-# Toutes les heures — voir ROADMAP.md (repo aos-explorer, section "Oracle
-# des Règles") pour le détail complet du circuit de double validation.
-# Volontairement PAS déclenché à la demande par l'app (aucun scope
-# "Actions" dans le token qu'elle transporte) — seul un déclenchement
-# manuel depuis github.com (réservé aux collaborateurs du repo) est
-# possible en plus du passage horaire.
+# Publication MANUELLE uniquement — bouton "Run workflow" sur github.com,
+# onglet Actions. Voir ROADMAP.md (repo aos-explorer, section "Oracle des
+# Règles") pour le circuit complet de double validation.
+#
+# Pourquoi pas de passage automatique (revue de sécurité du 07/08/2026) :
+# la clé que transporte l'app peut créer une Issue ET lui poser l'étiquette
+# "approuve-oracle", et elle s'authentifie sous l'identité du propriétaire
+# du repo — impossible donc de distinguer une Issue légitime d'une Issue
+# fabriquée par quelqu'un qui aurait extrait la clé du binaire. Un cron
+# horaire publiait sans relecture tout ce qui portait l'étiquette, jusque
+# dans l'app installée sur le téléphone d'Aidan.
+#
+# Ce token n'a AUCUN scope "Actions" : il ne peut pas déclencher ce
+# workflow. Seul un collaborateur du repo, connecté sur github.com, le
+# peut. La relecture humaine est donc garantie par construction, et non
+# par convention.
 on:
-  schedule:
-    - cron: '0 * * * *'
   workflow_dispatch: {}
 
 permissions:
